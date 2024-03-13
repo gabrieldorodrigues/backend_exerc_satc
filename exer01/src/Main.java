@@ -37,23 +37,16 @@ public class Main {
     }
 
     public static String retornaTextoDoServidor(String url) throws Exception {
-        // Cria um cliente HTTP
         HttpClient cliente = HttpClient.newHttpClient();
-        // Cria uma requisicao HTTP
         HttpRequest requisicao = HttpRequest.newBuilder().uri(URI.create(url)).build();
-        // Executa a requisicao e recebe uma resposta
         HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-        // Cria uma variavel com a lista em texto
         String texto = resposta.body();
         return texto;
     }
 
     public static String retornaElementoAleatorio(String texto) {
-        // Divide a variavel em varias strings (uma pra cada nome)
         String[] listaDeNomes = texto.split("\n");
-        // Cria um numero aleatorio de acordo com o vetor
         int indiceAleatorio = (int) Math.floor(Math.random() * listaDeNomes.length);
-        // Retorna uma posicao aleatoria da lista
         return listaDeNomes[indiceAleatorio];
     }
 
